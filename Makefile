@@ -1,6 +1,6 @@
-CC = /usr/bin/gcc
+CC = clang
 CFLAGS ?= -g -DDEBUG
-CFLAGS += -std=c2x
+CFLAGS += -std=c23
 
 TARGET = codegen
 
@@ -63,10 +63,11 @@ parser.c: parser.y
 
 # Generate embedded_data.c from source files
 embedded_data.c: $(EMBED_SOURCES) gen_embed.sh
-	./gen_embed.sh $(EMBED_FILES) > $@
+	sh gen_embed.sh $(EMBED_FILES) > $@
 
 clean:
 	rm -rf *.o $(TARGET)
+	rm -rf embedded_data.c
 	rm -rf *.class *.jar out*
 
 BOOTSTRAP_JAR ?= codegen.jar
