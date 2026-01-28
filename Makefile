@@ -67,7 +67,6 @@ embedded_data.c: $(EMBED_SOURCES) gen_embed.sh
 
 clean:
 	rm -rf *.o $(TARGET)
-	rm -rf embedded_data.c
 	rm -rf *.class *.jar out*
 
 BOOTSTRAP_JAR ?= codegen.jar
